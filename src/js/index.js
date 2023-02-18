@@ -16,9 +16,9 @@ function initPresentaionsSlider(className, reverseDirectionState) {
 
 function blurMainHeadingOnHover() {
   $('.presentations-slider--2').hover(() => {
-    $('.main__text').fadeOut(700);
+    $('.main__text').fadeOut(400);
   }, () => {
-    $('.main__text').fadeIn(700);
+    $('.main__text').fadeIn(400);
   })
 }
 
