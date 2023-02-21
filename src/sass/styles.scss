@@ -3,18 +3,44 @@
 @import "media";
 @import "keyframes";
 
-body {
-    background: linear-gradient(to right bottom, $black 0%, $black 50%, $lightGreen 100%) no-repeat;
+.scroll-top-button {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: $black;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 100;
+
+    svg path {
+        fill: $white;
+        transition: fill 0.3s;
+    }
+
+    &:hover {
+        background-color: $lightGreen;
+        box-shadow: 0 0 20px 10px rgba($color: $pink, $alpha: 0.5);
+    }
+}
+
+.scroll-top-button.show {
+    display: block;
 }
 
 .header {
     color: $white;
+    background-color: $black;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     height: 90px;
     width: 100%;
     display: flex;
-    box-shadow: 0 0 30px 40px $black;
+    box-shadow: 0 0 20px 30px $black;
     z-index: 100;
     position: relative;
 
@@ -54,17 +80,6 @@ body {
         align-items: center;
         position: relative;
 
-        &::after {
-            content: '';
-            width: 92%;
-            height: 1px;
-            background-color: $white;
-            position: absolute;
-            bottom: 0;
-            left: 4%;
-            transition: all 0.4s;
-        }
-
         &::before {
             content: '';
             height: 54%;
@@ -74,6 +89,7 @@ body {
             top: 22%;
             right: 0;
             transition: all 0.4s;
+            animation: scaleStripeVertical 1.5s ease-in-out;
         }
     }
 
@@ -81,7 +97,7 @@ body {
         padding: 10px;
         margin-left: 20px;
         font-size: 24px;
-        font-weight: 200;
+        font-weight: 400;
         transition: color 0.4s;
 
         &:hover {
@@ -111,6 +127,7 @@ body {
             bottom: 0;
             left: 8%;
             transition: all 0.4s;
+            animation: scaleStripeHorizontalShort 1.5s ease-in-out;
         }
 
         &::before {
@@ -122,13 +139,14 @@ body {
             top: 22%;
             right: 0;
             transition: all 0.4s;
+            animation: scaleStripeVertical 1.5s ease-in-out;
         }
 
         &-link {
             padding: 5px;
 
             svg path {
-                transition: fill 0.4s;
+                transition: fill 0.5s;
             }
 
             &:hover {
@@ -155,12 +173,14 @@ body {
             bottom: 0;
             right: 8%;
             transition: all 0.4s;
+            animation: scaleStripeHorizontalShort 1.5s ease-in-out;
         }
 
         &-link {
             color: $white;
             padding: 10px;
-            transition: color 0.4s;
+            transition: color 0.5s;
+            position: relative;
 
             &:hover {
                 color: $lightGreen;
@@ -169,23 +189,25 @@ body {
     }
 }
 
+.header__logo-wrapper::after,
+.nav::after {
+    content: '';
+    width: 92%;
+    height: 1px;
+    background-color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 4%;
+    transition: all 0.4s;
+    animation: scaleStripeHorizontal 1.5s ease-in-out;
+}
+
 .nav {
     width: 33.3%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
-
-    &::after {
-        content: '';
-        width: 92%;
-        height: 1px;
-        background-color: $white;
-        position: absolute;
-        bottom: 0;
-        left: 4%;
-        transition: all 0.4s;
-    }
 
     &::before {
         content: '';
@@ -196,12 +218,14 @@ body {
         top: 22%;
         right: 0;
         transition: all 0.4s;
+        animation: scaleStripeVertical 1.5s ease-in-out;
     }
 
     &__link {
         color: $white;
         padding: 10px;
         transition: color 0.4s;
+        position: relative;
 
         &:hover {
             color: $lightGreen;
@@ -216,6 +240,8 @@ body {
 }
 
 .main {
+    background: linear-gradient(to right bottom, $black 0%, $black 50%, $lightGreen 100%) no-repeat;
+
     &__wrapper {
         position: relative;
         display: flex;
@@ -224,69 +250,52 @@ body {
         gap: 40px;
         padding: 40px 0;
     }
-    
+
     &__text {
         position: absolute;
         top: 320px;
         padding: 50px 0 130px 40px;
-        width: 50%;
+        width: 52%;
         z-index: 10;
+        animation: fadeIn 0.7s ease-in-out;
     }
 
     &__heading {
         font-size: 72px;
-        font-weight: 300;
+        font-weight: 400;
         margin-bottom: 20px;
     }
 
     &__heading-subtext {
         font-size: 48px;
-        font-weight: 200;
+        font-weight: 300;
     }
+}
+
+.header__logo,
+.header__contact-me-link,
+.header__socials-link,
+.nav__link {
+    animation: fadeIn 1.2s ease-in-out;
 }
 
 .presentations-slider {
     overflow: hidden;
     position: relative;
     width: 100%;
-    filter: blur(10px) brightness(20%);
     transition: filter 0.7s;
-
-    // &::before {
-    //     content: '';
-    //     box-shadow: 0 0 20px 30px $black;
-    //     height: 100%;
-    //     width: 0;
-    //     position: absolute;
-    //     transform: rotateY(180deg);
-    //     left: 0;
-    //     top: 0;
-    //     z-index: 100;
-    // }
-
-    // &::after {
-    //     content: '';
-    //     box-shadow: 0 0 20px 30px $black;
-    //     height: 100%;
-    //     width: 0;
-    //     position: absolute;
-    //     transform: rotateY(180deg);
-    //     right: 0;
-    //     top: 0;
-    //     z-index: 100;
-    // }
 
     &:hover {
         filter: none;
     }
 
     &__wrapper {
-        transition-timing-function : linear;
+        transition-timing-function: linear;
     }
 
     &__slide {
         height: 290px;
-        width: 515px!important;
+        width: 515px !important;
         border-radius: 10px;
         overflow: hidden;
 
@@ -298,7 +307,18 @@ body {
         }
     }
 
-    // &--2::after {
-    //     box-shadow: 0 0 20px 30px $lightGreen;
-    // }
+    &--1 {
+        filter: none;
+        animation: lessBlurry 0.7s ease-in-out;
+    }
+
+    &--2 {
+        filter: blur(5px) brightness(20%);
+        animation: moreBlurry 0.7s ease-in-out;
+    }
+}
+
+.presentations-slider--1.blur {
+    animation: addBlur 0.7s ease-in-out;
+    filter: blur(5px) brightness(20%);
 }

@@ -1,3 +1,5 @@
+const scrolledYInPX = 500;
+
 function initPresentaionsSlider(className, reverseDirectionState) {
   new Swiper(className, {
     autoplay: {
@@ -16,12 +18,28 @@ function initPresentaionsSlider(className, reverseDirectionState) {
 
 function blurMainHeadingOnHover() {
   $('.presentations-slider--2').hover(() => {
-    $('.main__text').fadeOut(400);
+    $('.main__text').fadeOut(500);
+    $('.presentations-slider--1').addClass('blur');
   }, () => {
-    $('.main__text').fadeIn(400);
+    $('.main__text').fadeIn(500);
+    $('.presentations-slider--1').removeClass('blur');
   })
 }
+
+function showToTopBtn() {
+  if (window.scrollY >= scrolledYInPX) {
+    $('.scroll-top-button').classList.add("show");
+  } else {
+    $('.scroll-top-button').classList.remove("show");
+  }
+}
+
+$('.scroll-top-button').click((e) => { 
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 initPresentaionsSlider(".presentations-slider--1", false);
 initPresentaionsSlider(".presentations-slider--2", true);
 blurMainHeadingOnHover();
+showToTopBtn();
