@@ -52,6 +52,11 @@ textarea {
   resize: none;
 }
 
+mark {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
 @keyframes scaleStripeHorizontal {
   0% {
     width: 0;
@@ -143,6 +148,16 @@ textarea {
   }
 }
 
+@keyframes backgroundPan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
 .scroll-top-button {
   display: none;
   position: fixed;
@@ -185,33 +200,6 @@ textarea {
   position: relative;
 }
 
-.header:hover .header__logo-wrapper::after,
-.header:hover .nav::after {
-  transform: translateX(-4%);
-  width: 100%;
-}
-
-.header:hover .header__socials::after,
-.header:hover .header__contact-me::after {
-  width: 100%;
-}
-
-.header:hover .header__socials::after {
-  transform: translateX(-8%);
-}
-
-.header:hover .header__contact-me::after {
-  transform: translateX(8%);
-}
-
-.header:hover .header__logo-wrapper::before,
-.header:hover .header__socials::before,
-.header:hover .nav::before,
-.header:hover .header__contact-me::before {
-  transform: translateY(-22%);
-  height: 100%;
-}
-
 .header__logo-wrapper {
   width: 33.3%;
   display: flex;
@@ -228,7 +216,7 @@ textarea {
   top: 22%;
   right: 0;
   transition: all 0.4s;
-  animation: scaleStripeVertical 1.5s ease-in-out;
+  animation: scaleStripeVertical 1.2s ease-in-out;
 }
 
 .header__logo {
@@ -266,7 +254,7 @@ textarea {
   bottom: 0;
   left: 8%;
   transition: all 0.4s;
-  animation: scaleStripeHorizontalShort 1.5s ease-in-out;
+  animation: scaleStripeHorizontalShort 1.2s ease-in-out;
 }
 
 .header__socials::before {
@@ -278,7 +266,7 @@ textarea {
   top: 22%;
   right: 0;
   transition: all 0.4s;
-  animation: scaleStripeVertical 1.5s ease-in-out;
+  animation: scaleStripeVertical 1.2s ease-in-out;
 }
 
 .header__socials-link {
@@ -310,7 +298,7 @@ textarea {
   bottom: 0;
   right: 8%;
   transition: all 0.4s;
-  animation: scaleStripeHorizontalShort 1.5s ease-in-out;
+  animation: scaleStripeHorizontalShort 1.2s ease-in-out;
 }
 
 .header__contact-me-link {
@@ -324,6 +312,33 @@ textarea {
   color: #499E77;
 }
 
+.header.hoverAnimation:hover .header__logo-wrapper::after,
+.header.hoverAnimation:hover .nav::after {
+  transform: translateX(-4%);
+  width: 100%;
+}
+
+.header.hoverAnimation:hover .header__socials::after,
+.header.hoverAnimation:hover .header__contact-me::after {
+  width: 100%;
+}
+
+.header.hoverAnimation:hover .header__socials::after {
+  transform: translateX(-8%);
+}
+
+.header.hoverAnimation:hover .header__contact-me::after {
+  transform: translateX(8%);
+}
+
+.header.hoverAnimation:hover .header__logo-wrapper::before,
+.header.hoverAnimation:hover .header__socials::before,
+.header.hoverAnimation:hover .nav::before,
+.header.hoverAnimation:hover .header__contact-me::before {
+  transform: translateY(-22%);
+  height: 100%;
+}
+
 .header__logo-wrapper::after,
 .nav::after {
   content: "";
@@ -334,7 +349,7 @@ textarea {
   bottom: 0;
   left: 4%;
   transition: all 0.4s;
-  animation: scaleStripeHorizontal 1.5s ease-in-out;
+  animation: scaleStripeHorizontal 1.2s ease-in-out;
 }
 
 .nav {
@@ -354,7 +369,7 @@ textarea {
   top: 22%;
   right: 0;
   transition: all 0.4s;
-  animation: scaleStripeVertical 1.5s ease-in-out;
+  animation: scaleStripeVertical 1.2s ease-in-out;
 }
 
 .nav__link {
@@ -405,6 +420,15 @@ textarea {
 .main__heading-subtext {
   font-size: 48px;
   font-weight: 300;
+}
+
+.main__heading-subtext--marked {
+  animation: backgroundPan 5s linear infinite;
+  background: linear-gradient(to right, #499E77, #a9d7c2, #FFFFFF, #a9d7c2, #499E77);
+  background-clip: text;
+  background-size: 200%;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 .header__logo,

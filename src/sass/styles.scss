@@ -44,36 +44,6 @@
     z-index: 100;
     position: relative;
 
-    &:hover {
-
-        .header__logo-wrapper::after,
-        .nav::after {
-            transform: translateX(-4%);
-            width: 100%;
-        }
-
-        .header__socials::after,
-        .header__contact-me::after {
-            width: 100%;
-        }
-
-        .header__socials::after {
-            transform: translateX(-8%);
-        }
-
-        .header__contact-me::after {
-            transform: translateX(8%);
-        }
-
-        .header__logo-wrapper::before,
-        .header__socials::before,
-        .nav::before,
-        .header__contact-me::before {
-            transform: translateY(-22%);
-            height: 100%;
-        }
-    }
-
     &__logo-wrapper {
         width: 33.3%;
         display: flex;
@@ -89,7 +59,7 @@
             top: 22%;
             right: 0;
             transition: all 0.4s;
-            animation: scaleStripeVertical 1.5s ease-in-out;
+            animation: scaleStripeVertical 1.2s ease-in-out;
         }
     }
 
@@ -127,7 +97,7 @@
             bottom: 0;
             left: 8%;
             transition: all 0.4s;
-            animation: scaleStripeHorizontalShort 1.5s ease-in-out;
+            animation: scaleStripeHorizontalShort 1.2s ease-in-out;
         }
 
         &::before {
@@ -139,7 +109,7 @@
             top: 22%;
             right: 0;
             transition: all 0.4s;
-            animation: scaleStripeVertical 1.5s ease-in-out;
+            animation: scaleStripeVertical 1.2s ease-in-out;
         }
 
         &-link {
@@ -173,7 +143,7 @@
             bottom: 0;
             right: 8%;
             transition: all 0.4s;
-            animation: scaleStripeHorizontalShort 1.5s ease-in-out;
+            animation: scaleStripeHorizontalShort 1.2s ease-in-out;
         }
 
         &-link {
@@ -189,6 +159,37 @@
     }
 }
 
+.header.hoverAnimation {
+    &:hover {
+        .header__logo-wrapper::after,
+        .nav::after {
+            transform: translateX(-4%);
+            width: 100%;
+        }
+
+        .header__socials::after,
+        .header__contact-me::after {
+            width: 100%;
+        }
+
+        .header__socials::after {
+            transform: translateX(-8%);
+        }
+
+        .header__contact-me::after {
+            transform: translateX(8%);
+        }
+
+        .header__logo-wrapper::before,
+        .header__socials::before,
+        .nav::before,
+        .header__contact-me::before {
+            transform: translateY(-22%);
+            height: 100%;
+        }
+    }
+}
+
 .header__logo-wrapper::after,
 .nav::after {
     content: '';
@@ -199,7 +200,7 @@
     bottom: 0;
     left: 4%;
     transition: all 0.4s;
-    animation: scaleStripeHorizontal 1.5s ease-in-out;
+    animation: scaleStripeHorizontal 1.2s ease-in-out;
 }
 
 .nav {
@@ -218,7 +219,7 @@
         top: 22%;
         right: 0;
         transition: all 0.4s;
-        animation: scaleStripeVertical 1.5s ease-in-out;
+        animation: scaleStripeVertical 1.2s ease-in-out;
     }
 
     &__link {
@@ -269,6 +270,22 @@
     &__heading-subtext {
         font-size: 48px;
         font-weight: 300;
+
+        &--marked {
+            animation: backgroundPan 5s linear infinite;
+            background: linear-gradient(
+                to right,
+                $lightGreen,
+                lighten($lightGreen, 30%),
+                $white,
+                lighten($lightGreen, 30%),
+                $lightGreen
+            );
+            background-clip: text;
+            background-size: 200%;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
     }
 }
 
