@@ -1,6 +1,6 @@
-const scrolledYInPX = 500;
+const scrollTopBtnInitYInPX = 300;
 
-function initPresentaionsSlider(className, reverseDirectionState) {
+const initPresentaionsSlider = (className, reverseDirectionState) => {
   new Swiper(className, {
     autoplay: {
       delay: 0,
@@ -12,41 +12,48 @@ function initPresentaionsSlider(className, reverseDirectionState) {
     loop: true,
     speed: 5000,
     centeredSlides: true,
-    grabCursor: true,
+    allowTouchMove: false,
   });
-}
+};
 
-function blurMainHeadingOnHover() {
-  $('.presentations-slider--2').hover(() => {
-    $('.main__text').fadeOut(500);
-    $('.presentations-slider--1').addClass('blur');
+const blurMainHeadingOnHover = () => {
+  $('.presentations-slider--reverse').hover(() => {
+    $('.main__text').fadeOut(400);
+    $('.presentations-slider--forward').addClass('blur');
   }, () => {
-    $('.main__text').fadeIn(500);
-    $('.presentations-slider--1').removeClass('blur');
+    $('.main__text').fadeIn(400);
+    $('.presentations-slider--forward').removeClass('blur');
   })
-}
+};
 
-function showToTopBtn() {
-  if (window.scrollY >= scrolledYInPX) {
-    $('.scroll-top-button').classList.add('show');
-  } else {
-    $('.scroll-top-button').classList.remove('show');
-  }
-}
-
-function initHeaderHoverAnimation() {
+const initHeaderHoverAnimation = () => {
   setTimeout(() => {
     $('.header').addClass('hoverAnimation');
   }, 1250)
-}
+};
+
+$(window).scroll(() => {
+  if (window.scrollY > 100) {
+    $('header').addClass('flatten');
+  } else {
+    $('header').removeClass('flatten');
+  }
+});
+
+$(window).scroll(() => {
+  if (window.scrollY >= scrollTopBtnInitYInPX) {
+    $('.scroll-top-button').addClass('show');
+  } else {
+    $('.scroll-top-button').removeClass('show');
+  }
+});
 
 $('.scroll-top-button').click((e) => { 
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-initPresentaionsSlider('.presentations-slider--1', false);
-initPresentaionsSlider('.presentations-slider--2', true);
+initPresentaionsSlider('.presentations-slider--forward', false);
+initPresentaionsSlider('.presentations-slider--reverse', true);
 initHeaderHoverAnimation();
 blurMainHeadingOnHover();
-showToTopBtn();
