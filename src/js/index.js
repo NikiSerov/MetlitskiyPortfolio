@@ -1,4 +1,21 @@
 const scrollTopBtnInitYInPX = 300;
+let zSpacing = -2000,
+    lastPos = zSpacing / 5,
+    zValues = [];
+
+
+$(window).scroll(() => {
+  let top = $(document).scrollTop();
+  let delta = lastPos - top;
+  lastPos = top;
+  $('.frame').each((i, frame) => {
+    zValues.push((i * zSpacing) + zSpacing);
+    zValues[i] += delta * (-5);
+    let transform = `translateZ(${zValues[i]}px)`;
+    let opacity = (zValues[i] < (Math.abs(zSpacing) / 7) ? 1 : 0); 
+    $(frame).css({'transform': transform, 'opacity': opacity});
+  });
+});
 
 const initPresentaionsSlider = (className, reverseDirectionState) => {
   new Swiper(className, {
@@ -40,18 +57,18 @@ $(window).scroll(() => {
   }
 });
 
-$(window).scroll(() => {
-  if (window.scrollY >= scrollTopBtnInitYInPX) {
-    $('.scroll-top-button').addClass('show');
-  } else {
-    $('.scroll-top-button').removeClass('show');
-  }
-});
+// $(window).scroll(() => {
+//   if (window.scrollY >= scrollTopBtnInitYInPX) {
+//     $('.scroll-top-button').addClass('show');
+//   } else {
+//     $('.scroll-top-button').removeClass('show');
+//   }
+// });
 
-$('.scroll-top-button').click((e) => { 
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+// $('.scroll-top-button').click((e) => { 
+//   e.preventDefault();
+//   window.scrollTo({ top: 0, behavior: 'smooth' });
+// });
 
 initPresentaionsSlider('.presentations-slider--forward', false);
 initPresentaionsSlider('.presentations-slider--reverse', true);
