@@ -618,3 +618,18 @@ html {
         height: 100%;
     }
 }
+
+//СТРАНИЦА СВЯЗЬ
+
+.connect {
+    padding: 90px 50px 50px;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+
+    &__heading {
+        font-size: 32px;
+        font-weight: 400;
+        padding-top: 50px;
+    }
+}
