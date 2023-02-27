@@ -17,6 +17,20 @@ $(window).scroll(() => {
   });
 });
 
+window.scrollTo(0, 1);
+
+$('.transition-link').each((i, a) => {
+  const linkLocation = $(a).attr('href');;
+  console.log(linkLocation);
+  $(a).click((e) => {
+    e.preventDefault();
+    $('body').fadeOut(300);
+    setTimeout(() => {
+      window.location = linkLocation;
+    }, 300)
+  })
+});
+
 const initPresentaionsSlider = (className, reverseDirectionState) => {
   new Swiper(className, {
     autoplay: {
@@ -25,7 +39,7 @@ const initPresentaionsSlider = (className, reverseDirectionState) => {
       reverseDirection: reverseDirectionState,
     },
     slidesPerView: 'auto',
-    spaceBetween: 40,
+    spaceBetween: 45,
     loop: true,
     speed: 5000,
     centeredSlides: true,
@@ -35,10 +49,10 @@ const initPresentaionsSlider = (className, reverseDirectionState) => {
 
 const blurMainHeadingOnHover = () => {
   $('.presentations-slider--reverse').hover(() => {
-    $('.main__text').fadeOut(400);
+    $('.main-section__text').fadeOut(400);
     $('.presentations-slider--forward').addClass('blur');
   }, () => {
-    $('.main__text').fadeIn(400);
+    $('.main-section__text').fadeIn(400);
     $('.presentations-slider--forward').removeClass('blur');
   })
 };
@@ -57,18 +71,18 @@ $(window).scroll(() => {
   }
 });
 
-// $(window).scroll(() => {
-//   if (window.scrollY >= scrollTopBtnInitYInPX) {
-//     $('.scroll-top-button').addClass('show');
-//   } else {
-//     $('.scroll-top-button').removeClass('show');
-//   }
-// });
+$(window).scroll(() => {
+  if (window.scrollY >= scrollTopBtnInitYInPX) {
+    $('.scroll-top-button').addClass('show');
+  } else {
+    $('.scroll-top-button').removeClass('show');
+  }
+});
 
-// $('.scroll-top-button').click((e) => { 
-//   e.preventDefault();
-//   window.scrollTo({ top: 0, behavior: 'smooth' });
-// });
+$('.scroll-top-button').click((e) => { 
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 initPresentaionsSlider('.presentations-slider--forward', false);
 initPresentaionsSlider('.presentations-slider--reverse', true);
