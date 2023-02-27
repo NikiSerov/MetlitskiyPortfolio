@@ -21,7 +21,6 @@ window.scrollTo(0, 1);
 
 $('.transition-link').each((i, a) => {
   const linkLocation = $(a).attr('href');;
-  console.log(linkLocation);
   $(a).click((e) => {
     e.preventDefault();
     $('body').fadeOut(300);
@@ -41,7 +40,7 @@ const initPresentaionsSlider = (className, reverseDirectionState) => {
     slidesPerView: 'auto',
     spaceBetween: 45,
     loop: true,
-    speed: 5000,
+    speed: 3500,
     centeredSlides: true,
     allowTouchMove: false,
   });
@@ -60,7 +59,7 @@ const blurMainHeadingOnHover = () => {
 const initHeaderHoverAnimation = () => {
   setTimeout(() => {
     $('.header').addClass('hoverAnimation');
-  }, 1250)
+  }, 1750)
 };
 
 $(window).scroll(() => {
