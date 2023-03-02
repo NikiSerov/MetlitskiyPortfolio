@@ -5,6 +5,7 @@ let zSpacing = -2000,
 
 
 $(window).scroll(() => {
+  console.log($(window).scrollTop());
   let top = $(document).scrollTop();
   let delta = lastPos - top;
   lastPos = top;
@@ -16,6 +17,17 @@ $(window).scroll(() => {
     $(frame).css({'transform': transform, 'opacity': opacity});
   });
 });
+
+// var currentScroll = 0;
+// var previousScroll = 0;
+
+// $(window).bind('scroll', function(){
+//     currentScroll = $(window).scrollTop();
+//     if (($(window).scrollTop() > 60) && ($(window).scrollTop() < 390) && currentScroll > previousScroll) {
+//         window.scrollTo(0, 390);
+//     }
+//     previousScroll = $(window).scrollTop();
+// });
 
 window.scrollTo(0, 1);
 
@@ -62,6 +74,14 @@ const initHeaderHoverAnimation = () => {
   }, 1750)
 };
 
+$('.contact-form__input').focusin((e) => {
+  $(e.target).parent().addClass('focus');
+});
+
+$('.contact-form__input').focusout((e) => {
+  $(e.target).parent().removeClass('focus');
+});
+
 $(window).scroll(() => {
   if (window.scrollY > 100) {
     $('header').addClass('flatten');
@@ -77,6 +97,8 @@ $(window).scroll(() => {
     $('.scroll-top-button').removeClass('show');
   }
 });
+
+
 
 $('.scroll-top-button').click((e) => { 
   e.preventDefault();
