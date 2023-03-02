@@ -879,9 +879,10 @@ html {
 }
 
 .connect {
-  padding: 90px 50px 50px;
+  padding: 90px 70px 50px;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 1.2s;
 }
 
 .connect__heading {
@@ -935,12 +936,6 @@ html {
 
 .contact__text--pale {
   color: rgba(254, 252, 252, 0.592);
-}
-
-.contact-form-wrapper {
-  width: 70%;
-  display: flex;
-  justify-content: center;
 }
 
 .contact-form {
@@ -1025,4 +1020,28 @@ html {
 
 .contact-form__button:hover {
   background-color: #000000;
+}
+
+.dissection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #FFFFFF;
+  padding: 15px;
+}
+
+.dissection-container {
+  display: flex;
+  align-items: center;
+}
+
+.dissection svg {
+  width: 54px;
+  height: 54px;
+}
+
+.dissection__text {
+  width: 200px;
+  font-size: 18px;
+  font-weight: 300;
 }

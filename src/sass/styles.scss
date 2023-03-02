@@ -766,9 +766,10 @@ html {
 //СТРАНИЦА СВЯЗЬ
 
 .connect {
-    padding: 90px 50px 50px;
+    padding: 90px 70px 50px;
     display: flex;
     flex-direction: column;
+    animation: fadeIn 1.2s;
 
     &__heading {
         font-size: 32px;
@@ -826,12 +827,6 @@ html {
             color: rgba(254, 252, 252, 0.592);
         }
     }
-}
-
-.contact-form-wrapper {
-    width: 70%;
-    display: flex;
-    justify-content: center;
 }
 
 .contact-form {
@@ -918,5 +913,29 @@ html {
         &:hover {
             background-color: $black;
         }
+    }
+}
+
+.dissection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid $white;
+    padding: 15px;
+
+    &-container {
+        display: flex;
+        align-items: center;
+    }
+
+    svg {
+        width: 54px;
+        height: 54px;
+    }
+
+    &__text {
+        width: 200px;
+        font-size: 18px;
+        font-weight: 300;
     }
 }
